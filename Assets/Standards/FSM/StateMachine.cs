@@ -161,6 +161,12 @@ namespace Overtime.FSM
 				m_CurrentState.OnCollisionEnter(collision);
 		}
 
+		public void OnCollisionEnter2D(Collision2D collision)
+		{
+			if(m_CurrentState != null)
+				m_CurrentState.OnCollisionEnter2D(collision);
+		}
+
 		public void OnCollisionStay(Collision collision)
 		{
 			if(m_CurrentState != null)

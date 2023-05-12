@@ -1,6 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Overtime.FSM;
+
 namespace Game.Player
 {
-  public class StateIdle : StateBase {
+  public class Idle : StateBase {
     [SerializeField]
 		private float idleTime;
 
@@ -8,6 +13,11 @@ namespace Game.Player
 		{
 			AddTransition(StateTransition.START_RUN, StateID.RUN);
 		}
+
+		public override void FixedUpdate ()
+    {
+      return;
+    }
 
 		public override void Enter ()
 		{

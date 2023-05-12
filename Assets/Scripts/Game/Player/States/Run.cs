@@ -5,9 +5,7 @@ using Overtime.FSM;
 
 namespace Game.Player
 {
-  public class StateRun : StateBase {
-    public StateRun (PlayerStateMachine stateMachine) : base (stateMachine) { }
-
+  public class Run : StateBase {
     public override void BuildTransitions ()
     {
       AddTransition (StateTransition.STOP_RUN, StateID.FALL);
@@ -26,12 +24,20 @@ namespace Game.Player
 
     public override void FixedUpdate ()
     {
-      Debug.Log ("FixedUpdate Run");
+      base.FixedUpdate();
     }
 
     public override void Update ()
     {
-      Debug.Log ("Update Run");
+      DetectJump();
+    }
+
+    private void DetectJump()
+    {
+      if(Input.GetKeyDown(KeyCode.Space))
+      {
+        MakeTransition(StateTransition.START_JUMP);
+      }
     }
   }
 }

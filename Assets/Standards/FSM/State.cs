@@ -36,6 +36,7 @@ namespace Overtime.FSM
 		public virtual void OnTriggerStay(Collider collider) {}
 		public virtual void OnTriggerExit(Collider collider) {}
 		public virtual void OnCollisionEnter(Collision collision) {}
+		public virtual void OnCollisionEnter2D(Collision2D collision) {}
 		public virtual void OnCollisionStay(Collision collision) {}
 		public virtual void OnCollisionExit(Collision collision) {}
 
