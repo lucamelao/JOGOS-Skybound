@@ -5,30 +5,33 @@ using Overtime.FSM;
 
 namespace Game.Player
 {
-  public class Fall : StateBase {
+  public class Fly : StateBase {
+    [SerializeField] private float glideForce;
     public override void BuildTransitions ()
     {
-      AddTransition (StateTransition.STOP_FALL, StateID.RUN);
-      AddTransition (StateTransition.START_FLY, StateID.FLY);
+      AddTransition (StateTransition.STOP_FLY, StateID.FALL);
+      AddTransition (StateTransition.START_RUN, StateID.RUN);
     }
 
     public override void Enter ()
     {
       base.Enter();
-      Debug.Log ("Enter Fall");
-      m_currentPressTransition = StateTransition.START_FLY;
-      m_Inputs.Player.Press.performed += OnPress;
+      Debug.Log ("Enter Fly");
+      m_currentPressTransition = StateTransition.STOP_FLY;
+      m_Inputs.Player.Press.canceled += OnPress;
     }
 
     public override void Exit ()
     {
-      m_Inputs.Player.Press.performed -= OnPress;
-      Debug.Log ("Exit Fall");
+      m_Inputs.Player.Press.canceled -= OnPress;
+      Debug.Log ("Exit Fly");
     }
 
     public override void FixedUpdate ()
     {
       base.FixedUpdate();
+      ApplyForce();
+
     }
 
     public override void Update ()
@@ -42,8 +45,13 @@ namespace Game.Player
       Debug.Log("Collision");
       if(col.gameObject.tag == "Platform")
       {
-        MakeTransition(StateTransition.STOP_FALL);
+        MakeTransition(StateTransition.START_RUN);
       }
+    }
+
+    private void ApplyForce()
+    {
+      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * glideForce);
     }
   }
 }

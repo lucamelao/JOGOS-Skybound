@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Overtime.FSM;
 
 namespace Game.Player
@@ -11,14 +12,17 @@ namespace Game.Player
       AddTransition (StateTransition.STOP_RUN, StateID.FALL);
       AddTransition (StateTransition.START_JUMP, StateID.JUMP);
     }
-
     public override void Enter ()
     {
+      base.Enter();
+      m_currentPressTransition = StateTransition.START_JUMP;
+      m_Inputs.Player.Press.performed += OnPress;
       Debug.Log ("Enter Run");
     }
 
     public override void Exit ()
     {
+      m_Inputs.Player.Press.performed -= OnPress;
       Debug.Log ("Exit Run");
     }
 
@@ -29,15 +33,7 @@ namespace Game.Player
 
     public override void Update ()
     {
-      DetectJump();
-    }
 
-    private void DetectJump()
-    {
-      if(Input.GetKeyDown(KeyCode.Space))
-      {
-        MakeTransition(StateTransition.START_JUMP);
-      }
     }
   }
 }

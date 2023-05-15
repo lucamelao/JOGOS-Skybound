@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Overtime.FSM;
 
 namespace Game.Player
@@ -31,6 +32,9 @@ namespace Game.Player
 
 	public abstract class StateBase : State<PlayerStateMachine, StateID, StateTransition>
 	{
+
+    protected static GameInputs m_Inputs;
+    protected static StateTransition m_currentPressTransition;
 		public override void BuildTransitions ()
 		{
 			
@@ -38,7 +42,7 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
-			
+			GetGameInput();
 		}
 
 		public override void Exit ()
@@ -57,6 +61,20 @@ namespace Game.Player
 		}
 
     public override void OnCollisionEnter2D (Collision2D collision) {}
+
+    protected void GetGameInput()
+    {
+      if(m_Inputs == null)
+      {
+        m_Inputs = new GameInputs();
+        m_Inputs.Player.Enable();
+      }
+    }
+
+    protected void OnPress(InputAction.CallbackContext context)
+    {
+      MakeTransition(m_currentPressTransition);
+    }
 
     private void Move()
     {

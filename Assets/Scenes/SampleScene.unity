@@ -457,6 +457,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c6c71bc9b49c140e1b6d80e8f5ef2b3d, type: 2}
   - {fileID: 11400000, guid: c3c203430bc3e4089bd86f6cf71cf73f, type: 2}
   - {fileID: 11400000, guid: e7f098b49f09d4254b4408337015024a, type: 2}
+  - {fileID: 11400000, guid: 72f9ce27b96744dbb883649816c815a1, type: 2}
   m_Debug: 1
 --- !u!50 &621015338
 Rigidbody2D:
