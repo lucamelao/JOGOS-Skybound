@@ -5,8 +5,8 @@ using UnityEngine.Advertisements;
 
 public class AdDisplay : MonoBehaviour
 {
-    public string myGameIdAndroid = "YOUR_GAME_ID_HERE";
-    public string myGameIdIOS = "YOUR_GAME_ID_HERE";
+    public string myGameIdAndroid = "5280809";
+    public string myGameIdIOS = "5280808";
 
     public string adUnitIdAndroid = "Interstitial_Android";
     public string adUnitIdIOS = "Interstitial_iOS";
