@@ -52,7 +52,6 @@ namespace Game.Player
 
 		public override void FixedUpdate ()
 		{
-      Move();
 		}
 
 		public override void Update ()
@@ -74,11 +73,6 @@ namespace Game.Player
     protected void OnPress(InputAction.CallbackContext context)
     {
       MakeTransition(m_currentPressTransition);
-    }
-
-    private void Move()
-    {
-      transform.Translate(transform.right * Time.deltaTime * 2.0f);
     }
 	}
 }
