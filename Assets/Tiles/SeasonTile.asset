@@ -15,4 +15,4 @@ MonoBehaviour:
   Land: {fileID: 21300000, guid: 97f052e93620c4f5b8ede992bd9a5b9f, type: 3}
   Mountain: {fileID: 21300000, guid: 3b0335bb2bb85448da60a0f306e250ec, type: 3}
   Sky: {fileID: 21300000, guid: 69a1fec8d14324543ad1618ec4145060, type: 3}
-  season: 2
+  season: 1
