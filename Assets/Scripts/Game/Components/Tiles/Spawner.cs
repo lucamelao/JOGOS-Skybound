@@ -12,9 +12,6 @@ namespace Tiles
       [SerializeField] private int yPos;
 
       [SerializeField] private int maxCapacity = 5;
-
-      private float timePassed = 0.0f;
-      private float timeToSpawn = 10.0f;
       private Queue<GameObject> spawnedModules;
 
      
@@ -40,19 +37,24 @@ namespace Tiles
         //if spawnedModules.Count < maxCapacity, spawn new module
         //if spawnedModules.Count == maxCapacity, do nothing
         //Debug.Log("COUNT: " + spawnedModules.Count);
-        timePassed += Time.deltaTime;
-        if(timePassed >= timeToSpawn)
+        checkNull();
+        if(spawnedModules.Count < maxCapacity)
         {
           SpawnModule();
-          timePassed = 0.0f;
+        }
+      }
+
+      void checkNull()
+      {
+        if(spawnedModules.Peek() == null)
+        {
+          spawnedModules.Dequeue();
         }
       }
 
       void SpawnModule()
       {
-        GameObject oldTile = spawnedModules.Dequeue();
-         GameObject newTile = Instantiate(modules[0], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
-        Destroy(oldTile);
+        GameObject newTile = Instantiate(modules[0], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
         spawnedModules.Enqueue(newTile);
       }
   }

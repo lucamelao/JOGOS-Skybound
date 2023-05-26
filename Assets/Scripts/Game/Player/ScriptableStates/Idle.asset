@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Idle
   m_EditorClassIdentifier: 
   m_StateID: 0
-  idleTime: 1
+  idleTime: 0

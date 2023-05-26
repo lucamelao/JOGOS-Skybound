@@ -17,12 +17,6 @@ namespace Tiles
       void FixedUpdate()
       {
         tilemap.RefreshAllTiles();
-        Move();
-      }
-
-      private void Move()
-      {
-        transform.Translate(-transform.right * Time.deltaTime * 2.0f);
       }
   }
 }
