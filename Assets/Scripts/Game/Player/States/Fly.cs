@@ -42,7 +42,7 @@ namespace Game.Player
     //check collision with tag platform
     public override void OnCollisionEnter2D(Collision2D col)
     {
-      Debug.Log("Collision");
+      base.OnCollisionEnter2D(col);
       if(col.gameObject.tag == "Platform")
       {
         MakeTransition(StateTransition.START_RUN);

@@ -29,6 +29,22 @@ namespace Tiles
         tileData.sprite = newSprite;
       }
 
+      public void ChangeSeason()
+      {
+        switch (season)
+        {
+          case TileSeason.Land:
+            season = TileSeason.Mountain;
+            break;
+          case TileSeason.Mountain:
+            season = TileSeason.Sky;
+            break;
+          case TileSeason.Sky:
+            season = TileSeason.Land;
+            break;
+        }
+      }
+
       // public void RefreshSprite()
       // {
       //   _RefreshMap();

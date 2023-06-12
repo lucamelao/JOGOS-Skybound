@@ -8,6 +8,8 @@ namespace Tiles
   public class Spawner : MonoBehaviour
   {
       [SerializeField] private List<GameObject> modules;
+
+      [SerializeField] private SeasonalTile tile;
       [SerializeField] private int xPos;
       [SerializeField] private int yPos;
 
@@ -31,12 +33,6 @@ namespace Tiles
 
       void FixedUpdate()
       {
-        //check time passed
-        //if time passed, spawn new module
-        //if spawnedModules.Count > maxCapacity, destroy oldest module
-        //if spawnedModules.Count < maxCapacity, spawn new module
-        //if spawnedModules.Count == maxCapacity, do nothing
-        //Debug.Log("COUNT: " + spawnedModules.Count);
         checkNull();
         if(spawnedModules.Count < maxCapacity)
         {
@@ -44,6 +40,10 @@ namespace Tiles
         }
       }
 
+      void Update()
+      {
+        CheckSeason();
+      }
       void checkNull()
       {
         if(spawnedModules.Peek() == null)
@@ -56,6 +56,14 @@ namespace Tiles
       {
         GameObject newTile = Instantiate(modules[0], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
         spawnedModules.Enqueue(newTile);
+      }
+
+      void CheckSeason() 
+      {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+         tile.ChangeSeason();
+        }
       }
   }
 }
