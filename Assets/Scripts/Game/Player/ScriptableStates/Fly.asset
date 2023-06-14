@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Fly
   m_EditorClassIdentifier: 
   m_StateID: 5
-  glideForce: 7
+  airForceConstant: 8
