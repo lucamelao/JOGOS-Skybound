@@ -24,7 +24,6 @@ namespace Tiles
         for(int i = 0; i < maxCapacity; i++)
         {
           GameObject newTile = Instantiate(modules[0], new Vector3(xPos + i * 20, yPos, 0), Quaternion.identity);
-          Debug.Log("COUNT: " + spawnedModules.Count);
           spawnedModules.Enqueue(newTile);
         }
         // Instantiate(modules[0], new Vector3(xPos, yPos, 0), Quaternion.identity);

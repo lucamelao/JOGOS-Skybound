@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &25532831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 252176712}
   - component: {fileID: 252176713}
+  - component: {fileID: 252176714}
   m_Layer: 0
   m_Name: _manager
   m_TagString: Untagged
@@ -223,6 +224,18 @@ MonoBehaviour:
   xPos: 0
   yPos: 0
   maxCapacity: 5
+--- !u!114 &252176714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252176710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350fdc9b9a6c34bc0bdbd4530544b87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,7 +571,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3c203430bc3e4089bd86f6cf71cf73f, type: 2}
   - {fileID: 11400000, guid: e7f098b49f09d4254b4408337015024a, type: 2}
   - {fileID: 11400000, guid: 72f9ce27b96744dbb883649816c815a1, type: 2}
-  m_Debug: 1
+  m_Debug: 0
 --- !u!50 &621015338
 Rigidbody2D:
   serializedVersion: 4
