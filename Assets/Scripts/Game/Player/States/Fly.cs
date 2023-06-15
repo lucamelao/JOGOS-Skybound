@@ -16,7 +16,6 @@ namespace Game.Player
     public override void Enter ()
     {
       base.Enter();
-      Debug.Log ("Enter Fly");
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;
     }
@@ -24,7 +23,6 @@ namespace Game.Player
     public override void Exit ()
     {
       m_Inputs.Player.Press.canceled -= OnPress;
-      Debug.Log ("Exit Fly");
     }
 
     public override void FixedUpdate ()

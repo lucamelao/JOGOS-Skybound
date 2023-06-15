@@ -15,14 +15,12 @@ namespace Game.Player
 
     public override void Enter ()
     {
-      Debug.Log ("Enter Jump");
       ApplyForce();
       MakeTransition(StateTransition.STOP_JUMP);
     }
 
     public override void Exit ()
     {
-      Debug.Log ("Exit Jump");
     }
 
     public override void FixedUpdate ()

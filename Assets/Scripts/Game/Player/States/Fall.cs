@@ -15,7 +15,6 @@ namespace Game.Player
     public override void Enter ()
     {
       base.Enter();
-      Debug.Log ("Enter Fall");
       m_currentPressTransition = StateTransition.START_FLY;
       m_Inputs.Player.Press.performed += OnPress;
     }
@@ -23,7 +22,6 @@ namespace Game.Player
     public override void Exit ()
     {
       m_Inputs.Player.Press.performed -= OnPress;
-      Debug.Log ("Exit Fall");
     }
 
     public override void FixedUpdate ()
@@ -40,7 +38,6 @@ namespace Game.Player
     public override void OnCollisionEnter2D(Collision2D col)
     {
       base.OnCollisionEnter2D(col);
-      Debug.Log("Collision");
       if(col.gameObject.tag == "Platform")
       {
         MakeTransition(StateTransition.STOP_FALL);

@@ -17,13 +17,11 @@ namespace Game.Player
       base.Enter();
       m_currentPressTransition = StateTransition.START_JUMP;
       m_Inputs.Player.Press.performed += OnPress;
-      Debug.Log ("Enter Run");
     }
 
     public override void Exit ()
     {
       m_Inputs.Player.Press.performed -= OnPress;
-      Debug.Log ("Exit Run");
     }
 
     public override void FixedUpdate ()

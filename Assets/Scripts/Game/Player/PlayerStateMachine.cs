@@ -45,7 +45,6 @@ namespace Game.Player
 
 		void OnCollisionEnter2D(Collision2D col)
 		{
-		  Debug.Log("Collision");
 			m_FSM.OnCollisionEnter2D(col);
 		}
 

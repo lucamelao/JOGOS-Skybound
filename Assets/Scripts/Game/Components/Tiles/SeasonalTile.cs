@@ -29,6 +29,11 @@ namespace Tiles
         tileData.sprite = newSprite;
       }
 
+      public void Init()
+      {
+        season = TileSeason.Land;
+      }
+
       public void ChangeSeason()
       {
         switch (season)
@@ -40,7 +45,6 @@ namespace Tiles
             season = TileSeason.Sky;
             break;
           case TileSeason.Sky:
-            season = TileSeason.Land;
             break;
         }
       }

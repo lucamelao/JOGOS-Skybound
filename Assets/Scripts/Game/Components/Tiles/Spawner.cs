@@ -14,6 +14,7 @@ namespace Tiles
       [SerializeField] private int yPos;
 
       [SerializeField] private int maxCapacity = 5;
+      [SerializeField] private LevelManager levelManager;
       private Queue<GameObject> spawnedModules;
 
      
@@ -53,7 +54,9 @@ namespace Tiles
 
       void SpawnModule()
       {
-        GameObject newTile = Instantiate(modules[0], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
+        int index = GetSpawnIndex();
+        Debug.Log($"Index: {index}");
+        GameObject newTile = Instantiate(modules[index], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
         spawnedModules.Enqueue(newTile);
       }
 
@@ -63,6 +66,11 @@ namespace Tiles
         {
          tile.ChangeSeason();
         }
+      }
+
+      int GetSpawnIndex()
+      {
+        return Random.Range(0, levelManager.CurrDifficulty);
       }
   }
 }

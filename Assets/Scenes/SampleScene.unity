@@ -184,6 +184,8 @@ GameObject:
   - component: {fileID: 252176712}
   - component: {fileID: 252176713}
   - component: {fileID: 252176714}
+  - component: {fileID: 252176716}
+  - component: {fileID: 252176715}
   m_Layer: 0
   m_Name: _manager
   m_TagString: Untagged
@@ -220,10 +222,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modules:
   - {fileID: 1720088476742956092, guid: f97254bfbca7143faa2bcb7f5e8e27dd, type: 3}
+  - {fileID: 1720088476742956092, guid: f97254bfbca7143faa2bcb7f5e8e27dd, type: 3}
+  - {fileID: 1720088476742956092, guid: f97254bfbca7143faa2bcb7f5e8e27dd, type: 3}
+  - {fileID: 1720088476742956092, guid: f97254bfbca7143faa2bcb7f5e8e27dd, type: 3}
   tile: {fileID: 11400000, guid: 84f7aa1f40fa14c89afa83256b0c1afc, type: 2}
   xPos: 0
   yPos: 0
   maxCapacity: 5
+  levelManager: {fileID: 252176716}
 --- !u!114 &252176714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +242,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 350fdc9b9a6c34bc0bdbd4530544b87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &252176715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252176710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e63e6de0b27a04540bb149d97b056668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &252176716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 252176710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314de587971b346d789ac6cd3779e070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seasonalTile: {fileID: 11400000, guid: 84f7aa1f40fa14c89afa83256b0c1afc, type: 2}
+  _pointsManager: {fileID: 252176715}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
