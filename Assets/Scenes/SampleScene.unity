@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardedAds: {fileID: 0}
   myButton: {fileID: 1926128075}
-  adsBar: {fileID: 425687719}
+  adsBar: {fileID: 0}
 --- !u!95 &1926128079
 Animator:
   serializedVersion: 5

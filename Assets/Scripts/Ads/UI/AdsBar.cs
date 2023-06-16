@@ -7,9 +7,15 @@ public class AdsBar : MonoBehaviour
 
     private float _n;
 
+    void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void Init(int n)
     {
         _n = n;
+        gameObject.SetActive(true);
     }
 
     public void UpdateBar(float n)

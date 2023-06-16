@@ -11,9 +11,19 @@ public class AdButton : MonoBehaviour
 
     void Start()
     {
-        adsBar.Init(_time);
         if(myButton)
         {
+            myButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void Init()
+    {
+        if (myButton && adsBar)
+        {
+            myButton.gameObject.SetActive(true);
+            adsBar.gameObject.SetActive(true);
+            adsBar.Init(_time);
             StartCoroutine(DisableButtonAfterSeconds(_time));
         }
     }
