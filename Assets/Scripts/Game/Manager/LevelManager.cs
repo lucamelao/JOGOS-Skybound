@@ -42,13 +42,13 @@ public class LevelManager : MonoBehaviour
     {
       if(_seasonalTile.season == TileSeason.Sky) return;
       if (_pointsManager.Points > accelerator) {
-        _player.GetComponent<Rigidbody2D>().gravityScale += 0.4f;
-        _player.GetComponent<PlayerStateMachine>().jumpForce += 35f;
-        _spawner.Speed = _spawner.Speed + 0.5f;
+        _player.GetComponent<Rigidbody2D>().gravityScale += 0.2f;
+        _player.GetComponent<PlayerStateMachine>().jumpForce += 17.5f;
+        _spawner.Speed = _spawner.Speed + 0.25f;
         _spawner.ChangeMouleSpeed();
         accelerator++;
       }
-      if (_pointsManager.Points > 10 * CurrDifficulty)
+      if (_pointsManager.Points > 20 * CurrDifficulty)
       {
         _seasonalTile.ChangeSeason();
         gameObject.GetComponent<Background>().ChangeSeason();

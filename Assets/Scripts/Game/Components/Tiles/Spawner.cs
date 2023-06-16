@@ -17,6 +17,7 @@ namespace Tiles
       [SerializeField] private int maxCapacity = 5;
       [SerializeField] private LevelManager levelManager;
       private Queue<GameObject> spawnedModules;
+      private int lastIndex = 0;
 
       public float Speed { get; set; } = 5f;
      
@@ -34,7 +35,7 @@ namespace Tiles
         spawnedModules = new Queue<GameObject>(maxCapacity);
         for(int i = 0; i < maxCapacity; i++)
         {
-          GameObject newTile = Instantiate(modules[0], new Vector3(xPos + i * 25, yPos, 0), Quaternion.identity);
+          GameObject newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + i * 25, yPos, 0), Quaternion.identity);
           newTile.GetComponent<Module>().Speed = Speed;
           spawnedModules.Enqueue(newTile);
         }
@@ -82,7 +83,12 @@ namespace Tiles
 
       int GetSpawnIndex()
       {
-        return Random.Range(0, levelManager.CurrDifficulty);
+        int random = Random.Range((levelManager.CurrDifficulty-1)*3, (levelManager.CurrDifficulty-1)*3+2);
+        while (random == lastIndex) {
+          random = Random.Range((levelManager.CurrDifficulty-1)*3, (levelManager.CurrDifficulty-1)*3+2);
+        }
+        lastIndex = random;
+        return random;
       }
   }
 }
