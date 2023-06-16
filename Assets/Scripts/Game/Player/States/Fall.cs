@@ -18,6 +18,7 @@ namespace Game.Player
       base.Enter();
       m_currentPressTransition = StateTransition.START_FLY;
       m_Inputs.Player.Press.performed += OnPress;
+      gameObject.GetComponent<Animator>().Play("Falling");
     }
 
     public override void Exit ()
