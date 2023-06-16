@@ -6,7 +6,7 @@ using Overtime.FSM;
 namespace Game.Player
 {
   public class Fly : StateBase {
-    [SerializeField] private float glideForce;
+    [SerializeField] private float airForceConstant;
     public override void BuildTransitions ()
     {
       AddTransition (StateTransition.STOP_FLY, StateID.FALL);
@@ -19,6 +19,7 @@ namespace Game.Player
       Debug.Log ("Enter Fly");
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;
+      gameObject.GetComponent<Animator>().Play("Gliding");
     }
 
     public override void Exit ()
@@ -51,7 +52,14 @@ namespace Game.Player
 
     private void ApplyForce()
     {
-      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * glideForce);
+      float velo = gameObject.GetComponent<Rigidbody2D>().velocity.y;
+      float airForce;
+      if (velo<0) {
+        airForce = velo*velo * airForceConstant;
+      } else {
+        airForce = -velo*velo * airForceConstant;
+      }
+      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * airForce);
     }
   }
 }

@@ -19,27 +19,27 @@ public class AdDisplay : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
-    {
-        #if UNITY_IOS
-	        Advertisement.Initialize(myGameIdIOS, testMode);
-	        myAdUnitId = adUnitIdIOS;
-        #else
-                Advertisement.Initialize(myGameIdAndroid, testMode);
-                myAdUnitId = adUnitIdAndroid;
-        #endif
+    // void Start()
+    // {
+    //     #if UNITY_IOS
+	//         Advertisement.Initialize(myGameIdIOS, testMode);
+	//         myAdUnitId = adUnitIdIOS;
+    //     #else
+    //             Advertisement.Initialize(myGameIdAndroid, testMode);
+    //             myAdUnitId = adUnitIdAndroid;
+    //     #endif
 
-    }
+    // }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Advertisement.isInitialized && !adStarted)
-        {
-            Advertisement.Load(myAdUnitId);
-            Advertisement.Show(myAdUnitId);
-            adStarted = true;
-        }
+    // // Update is called once per frame
+    // void Update()
+    // {
+    //     if (Advertisement.isInitialized && !adStarted)
+    //     {
+    //         Advertisement.Load(myAdUnitId);
+    //         Advertisement.Show(myAdUnitId);
+    //         adStarted = true;
+    //     }
 
-    }
+    // }
 }

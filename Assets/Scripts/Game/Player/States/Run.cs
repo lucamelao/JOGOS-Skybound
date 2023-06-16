@@ -18,6 +18,7 @@ namespace Game.Player
       m_currentPressTransition = StateTransition.START_JUMP;
       m_Inputs.Player.Press.performed += OnPress;
       Debug.Log ("Enter Run");
+      gameObject.GetComponent<Animator>().Play("Running");
     }
 
     public override void Exit ()
