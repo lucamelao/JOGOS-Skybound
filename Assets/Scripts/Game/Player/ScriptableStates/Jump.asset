@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Jump
   m_EditorClassIdentifier: 
   m_StateID: 2
-  jumpForce: 300
+  jumpForce: 600
