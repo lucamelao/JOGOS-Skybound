@@ -8,6 +8,8 @@ TagManager:
   - Module
   - EOM
   - Floor
+  - Spike
+  - Wall
   layers:
   - Default
   - TransparentFX

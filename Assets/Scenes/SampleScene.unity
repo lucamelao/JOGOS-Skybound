@@ -235,12 +235,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   modules:
-  - {fileID: 1720088476742956092, guid: f97254bfbca7143faa2bcb7f5e8e27dd, type: 3}
+  - {fileID: 1720088476742956092, guid: 0ac99535c485a4baaa9826be09f2286e, type: 3}
   - {fileID: 1720088476742956092, guid: 86a4eb7b4303440368cf0a9180151b82, type: 3}
   - {fileID: 1720088476742956092, guid: ee3f3cc9f2f184d3ea4489b085e48bd5, type: 3}
   - {fileID: 1720088476742956092, guid: 499262723d41a46b0bdff44b82db755f, type: 3}
   tile: {fileID: 11400000, guid: 84f7aa1f40fa14c89afa83256b0c1afc, type: 2}
-  xPos: 0
+  xPos: 5
   yPos: 0
   maxCapacity: 5
   levelManager: {fileID: 252176716}
@@ -283,6 +283,7 @@ MonoBehaviour:
   _seasonalTile: {fileID: 11400000, guid: 84f7aa1f40fa14c89afa83256b0c1afc, type: 2}
   _pointsManager: {fileID: 252176715}
   _spawner: {fileID: 252176713}
+  _player: {fileID: 621015334}
 --- !u!114 &252176717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,7 +387,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -696,8 +697,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621015334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.11, y: -0.46, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: -4, y: -0.46, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -716,6 +717,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LevelManager: {fileID: 252176716}
+  jumpForce: 600
   m_InitialState: 0
   m_States:
   - {fileID: 11400000, guid: c6a4b65b446c54b78b945058e5ffbe14, type: 2}

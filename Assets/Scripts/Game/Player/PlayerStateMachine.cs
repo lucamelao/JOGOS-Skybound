@@ -8,6 +8,7 @@ namespace Game.Player
   public class PlayerStateMachine : MonoBehaviour 
   {
 	  public LevelManager m_LevelManager;
+	  public float jumpForce = 300;
     private StateMachine<PlayerStateMachine, StateID, StateTransition> m_FSM;
     public StateMachine<PlayerStateMachine, StateID, StateTransition> FSM
     {
@@ -47,7 +48,7 @@ namespace Game.Player
 		void OnCollisionEnter2D(Collision2D col)
 		{
 			m_FSM.OnCollisionEnter2D(col);
-			if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM")
+			if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
       {
         SetStop();
 				Continue();
@@ -55,7 +56,8 @@ namespace Game.Player
 		}
 		void Continue()
 		{
-			gameObject.GetComponent<Transform>().position += new Vector3(0, 10, 0);
+			gameObject.GetComponent<Transform>().position = new Vector3(-4, 5, 0);
+			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 			m_FSM.Continue();
 			SetContinue();
 		}

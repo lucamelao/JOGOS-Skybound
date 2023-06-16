@@ -69,7 +69,7 @@ namespace Game.Player
 
     public override void OnCollisionEnter2D (Collision2D col) 
     {
-      if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM")
+      if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
       {
         MakeTransition(StateTransition.START_DEAD);
       }

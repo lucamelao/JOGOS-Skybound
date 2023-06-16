@@ -34,7 +34,7 @@ namespace Tiles
         spawnedModules = new Queue<GameObject>(maxCapacity);
         for(int i = 0; i < maxCapacity; i++)
         {
-          GameObject newTile = Instantiate(modules[0], new Vector3(xPos + i * 20, yPos, 0), Quaternion.identity);
+          GameObject newTile = Instantiate(modules[0], new Vector3(xPos + i * 25, yPos, 0), Quaternion.identity);
           newTile.GetComponent<Module>().Speed = Speed;
           spawnedModules.Enqueue(newTile);
         }
@@ -66,7 +66,7 @@ namespace Tiles
       void SpawnModule()
       {
         int index = GetSpawnIndex();
-        GameObject newTile = Instantiate(modules[index], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
+        GameObject newTile = Instantiate(modules[index], new Vector3(xPos + spawnedModules.Count * 25, yPos, 0), Quaternion.identity);
         newTile.GetComponent<Module>().Speed = Speed;
         spawnedModules.Enqueue(newTile);
       }

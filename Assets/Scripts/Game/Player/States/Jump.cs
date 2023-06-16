@@ -7,7 +7,6 @@ namespace Game.Player
 {
   public class Jump : StateBase {
 
-    [SerializeField] private float jumpForce;
     public override void BuildTransitions ()
     {
       base.BuildTransitions();
@@ -36,7 +35,7 @@ namespace Game.Player
 
     private void ApplyForce()
     {
-      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpForce);
+      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * gameObject.GetComponent<PlayerStateMachine>().jumpForce);
     }
   }
 }

@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Tiles;
+using Game.Player;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private SeasonalTile _seasonalTile;
     [SerializeField] private PointsManager _pointsManager;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private GameObject _player;
     public int CurrDifficulty {get; private set;} = 1;
     private float _prevSpeed;
+    private int accelerator = 1;
     public void EndGame() 
     {
       _pointsManager.EndGame();
@@ -38,11 +41,17 @@ public class LevelManager : MonoBehaviour
     void CheckDifficulty()
     {
       if(_seasonalTile.season == TileSeason.Sky) return;
+      if (_pointsManager.Points > accelerator) {
+        _player.GetComponent<Rigidbody2D>().gravityScale += 0.4f;
+        _player.GetComponent<PlayerStateMachine>().jumpForce += 35f;
+        _spawner.Speed = _spawner.Speed + 0.5f;
+        _spawner.ChangeMouleSpeed();
+        accelerator++;
+      }
       if (_pointsManager.Points > 10 * CurrDifficulty)
       {
-        _spawner.Speed = _spawner.Speed + 10f;
-        _spawner.ChangeMouleSpeed();
         _seasonalTile.ChangeSeason();
+        gameObject.GetComponent<Background>().ChangeSeason();
         CurrDifficulty++;
       }
     }
