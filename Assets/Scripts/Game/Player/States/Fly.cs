@@ -9,6 +9,7 @@ namespace Game.Player
     [SerializeField] private float glideForce;
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_FLY, StateID.FALL);
       AddTransition (StateTransition.START_RUN, StateID.RUN);
     }

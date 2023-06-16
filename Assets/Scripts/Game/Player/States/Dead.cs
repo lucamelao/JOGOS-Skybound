@@ -5,14 +5,14 @@ using Overtime.FSM;
 
 namespace Game.Player
 {
-  public class Idle : StateBase {
+  public class Dead : StateBase {
     [SerializeField]
 		private float idleTime;
 
 		public override void BuildTransitions ()
 		{
-			base.BuildTransitions();
-			AddTransition(StateTransition.START_RUN, StateID.RUN);
+      //base.BuildTransitions();
+			AddTransition(StateTransition.START_FLY, StateID.FLY);
 		}
 
 		public override void FixedUpdate ()
@@ -22,14 +22,20 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
-			StartCoroutine(WaitAndRun());
+      base.SetStop();
+      Debug.Log("Dead!!!");
 		}
+
+    public override void Continue()
+    {
+      StartCoroutine(WaitAndRun());
+    }
 
 		private IEnumerator WaitAndRun()
 		{
 			yield return new WaitForSeconds(idleTime);
 
-			MakeTransition(StateTransition.START_RUN);
+			MakeTransition(StateTransition.START_FLY);
 		}
 	}
 }

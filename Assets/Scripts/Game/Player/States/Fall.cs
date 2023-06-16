@@ -8,6 +8,7 @@ namespace Game.Player
   public class Fall : StateBase {
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_FALL, StateID.RUN);
       AddTransition (StateTransition.START_FLY, StateID.FLY);
     }

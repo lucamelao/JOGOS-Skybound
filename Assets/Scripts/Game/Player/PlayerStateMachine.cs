@@ -7,6 +7,7 @@ namespace Game.Player
 {
   public class PlayerStateMachine : MonoBehaviour 
   {
+	  public LevelManager m_LevelManager;
     private StateMachine<PlayerStateMachine, StateID, StateTransition> m_FSM;
     public StateMachine<PlayerStateMachine, StateID, StateTransition> FSM
     {
@@ -46,6 +47,27 @@ namespace Game.Player
 		void OnCollisionEnter2D(Collision2D col)
 		{
 			m_FSM.OnCollisionEnter2D(col);
+			if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM")
+      {
+        SetStop();
+				Continue();
+      }
+		}
+		void Continue()
+		{
+			gameObject.GetComponent<Transform>().position += new Vector3(0, 10, 0);
+			m_FSM.Continue();
+			SetContinue();
+		}
+
+		void SetStop()
+		{
+			m_LevelManager.SetStop();
+		}
+
+		void SetContinue()
+		{
+			m_LevelManager.SetContinue();
 		}
 
 		#if UNITY_EDITOR

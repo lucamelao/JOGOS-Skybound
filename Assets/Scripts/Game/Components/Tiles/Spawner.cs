@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Modules;
 
 namespace Tiles
 {
@@ -17,14 +18,24 @@ namespace Tiles
       [SerializeField] private LevelManager levelManager;
       private Queue<GameObject> spawnedModules;
 
+      public float Speed { get; set; } = 5f;
      
       //[SerializeField] private GameObject parent;
+
+      public void ChangeMouleSpeed()
+      {
+        foreach(GameObject module in spawnedModules)
+        {
+          module.GetComponent<Module>().Speed = Speed;
+        }
+      }
       void Start()
       {
         spawnedModules = new Queue<GameObject>(maxCapacity);
         for(int i = 0; i < maxCapacity; i++)
         {
           GameObject newTile = Instantiate(modules[0], new Vector3(xPos + i * 20, yPos, 0), Quaternion.identity);
+          newTile.GetComponent<Module>().Speed = Speed;
           spawnedModules.Enqueue(newTile);
         }
         // Instantiate(modules[0], new Vector3(xPos, yPos, 0), Quaternion.identity);
@@ -33,15 +44,15 @@ namespace Tiles
 
       void FixedUpdate()
       {
+      }
+
+      void Update()
+      {
         checkNull();
         if(spawnedModules.Count < maxCapacity)
         {
           SpawnModule();
         }
-      }
-
-      void Update()
-      {
         CheckSeason();
       }
       void checkNull()
@@ -55,8 +66,8 @@ namespace Tiles
       void SpawnModule()
       {
         int index = GetSpawnIndex();
-        Debug.Log($"Index: {index}");
         GameObject newTile = Instantiate(modules[index], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
+        newTile.GetComponent<Module>().Speed = Speed;
         spawnedModules.Enqueue(newTile);
       }
 

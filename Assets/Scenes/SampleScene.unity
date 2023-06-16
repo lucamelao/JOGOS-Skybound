@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _seasonalTile: {fileID: 11400000, guid: 84f7aa1f40fa14c89afa83256b0c1afc, type: 2}
   _pointsManager: {fileID: 252176715}
+  _spawner: {fileID: 252176713}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,6 +597,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbbc454b539c4e39adbc0ee79587dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_LevelManager: {fileID: 252176716}
   m_InitialState: 0
   m_States:
   - {fileID: 11400000, guid: c6a4b65b446c54b78b945058e5ffbe14, type: 2}
@@ -603,6 +605,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3c203430bc3e4089bd86f6cf71cf73f, type: 2}
   - {fileID: 11400000, guid: e7f098b49f09d4254b4408337015024a, type: 2}
   - {fileID: 11400000, guid: 72f9ce27b96744dbb883649816c815a1, type: 2}
+  - {fileID: 11400000, guid: 8c4d85a9901ea43f681e4626c3ecdc59, type: 2}
   m_Debug: 0
 --- !u!50 &621015338
 Rigidbody2D:
