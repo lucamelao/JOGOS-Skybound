@@ -14,6 +14,6 @@ public class AdsBar : MonoBehaviour
 
     public void UpdateBar(float n)
     {
-        _image.fillAmount = n / _n;
+        _image.fillAmount = (_n - n) / _n;
     }
 }

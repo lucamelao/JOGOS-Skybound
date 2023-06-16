@@ -7,7 +7,7 @@ public class AdButton : MonoBehaviour
     public RewardedAds rewardedAds; 
     public Button myButton;
     public AdsBar adsBar;
-    private int _time = 10;
+    private int _time = 5;
 
     void Start()
     {
@@ -25,11 +25,12 @@ public class AdButton : MonoBehaviour
 
     IEnumerator DisableButtonAfterSeconds(int seconds)
     {
-        for (int i = 0; i < seconds; i++)
+        for (int i = 0; i < seconds * 100; i++)
         {
-            adsBar.UpdateBar(i);
-            yield return new WaitForSeconds(1);
+            adsBar.UpdateBar(i / 100f);
+            yield return new WaitForSeconds(0.01f);
         }
         myButton.gameObject.SetActive(false);
+        adsBar.gameObject.SetActive(false);
     }
 }
