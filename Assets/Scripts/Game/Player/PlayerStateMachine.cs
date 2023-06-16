@@ -51,7 +51,7 @@ namespace Game.Player
 			if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
       {
         SetStop();
-				Continue();
+				EndGame();
       }
 		}
 		void Continue()
@@ -60,6 +60,11 @@ namespace Game.Player
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 			m_FSM.Continue();
 			SetContinue();
+		}
+
+		void EndGame()
+		{
+			m_LevelManager.EndGame();
 		}
 
 		void SetStop()

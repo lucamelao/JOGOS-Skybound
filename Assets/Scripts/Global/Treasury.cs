@@ -17,7 +17,7 @@ public sealed class Treasury : SingletonBase<Treasury>
     public bool Spend(int amount)
     {
       if(amount > Balance) return false;
-      Balance += amount;
+      Balance -= amount;
       return true;
     }
 
