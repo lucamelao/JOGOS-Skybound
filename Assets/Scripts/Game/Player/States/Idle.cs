@@ -11,6 +11,7 @@ namespace Game.Player
 
 		public override void BuildTransitions ()
 		{
+			base.BuildTransitions();
 			AddTransition(StateTransition.START_RUN, StateID.RUN);
 		}
 

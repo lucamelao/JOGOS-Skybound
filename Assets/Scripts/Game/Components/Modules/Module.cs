@@ -7,7 +7,7 @@ namespace Modules
 {
   public class Module : MonoBehaviour
   {
-    [SerializeField] private float speed;
+    public float Speed { get; set; }
     void OnTriggerEnter2D(Collider2D other)
     {
       if (other.gameObject.tag == "EOM")
@@ -23,7 +23,7 @@ namespace Modules
 
     private void Move()
     {
-      transform.Translate(-transform.right * Time.deltaTime * speed);
+      transform.Translate(-transform.right * Time.deltaTime * Speed);
     }
   }
 }

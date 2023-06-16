@@ -10,6 +10,7 @@ namespace Game.Player
     [SerializeField] private float jumpForce;
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_JUMP, StateID.FALL);
     }
 

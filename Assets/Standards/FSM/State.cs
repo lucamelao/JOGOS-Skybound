@@ -40,6 +40,9 @@ namespace Overtime.FSM
 		public virtual void OnCollisionStay(Collision collision) {}
 		public virtual void OnCollisionExit(Collision collision) {}
 
+		public virtual void SetStop () {}
+		public virtual void Continue () {}
+
 		private TClassType m_Parent;
 		protected TClassType Parent
 		{

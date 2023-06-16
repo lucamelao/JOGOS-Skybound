@@ -9,6 +9,7 @@ namespace Game.Player
   public class Run : StateBase {
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_RUN, StateID.FALL);
       AddTransition (StateTransition.START_JUMP, StateID.JUMP);
     }
