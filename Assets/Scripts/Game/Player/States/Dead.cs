@@ -22,12 +22,12 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
-      base.SetStop();
-      Debug.Log("Dead!!!");
+			gameObject.SetActive(false);
 		}
 
     public override void Continue()
     {
+			gameObject.SetActive(true);
       StartCoroutine(WaitAndRun());
     }
 
