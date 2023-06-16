@@ -1,14 +1,35 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class AdButton : MonoBehaviour
 {
-    public RewardedAds rewardedAds; // Reference to the RewardedAds script.
+    public RewardedAds rewardedAds; 
+    public Button myButton;
+    public AdsBar adsBar;
+    private int _time = 10;
 
-    // Assign this to the Button's onClick event in the inspector.
+    void Start()
+    {
+        adsBar.Init(_time);
+        if(myButton)
+        {
+            StartCoroutine(DisableButtonAfterSeconds(_time));
+        }
+    }
+
     public void OnButtonClick()
     {
-        // Call the LoadAndShowAd() function in the RewardedAds script.
         rewardedAds.LoadAndShowAd();
+    }
+
+    IEnumerator DisableButtonAfterSeconds(int seconds)
+    {
+        for (int i = 0; i < seconds; i++)
+        {
+            adsBar.UpdateBar(i);
+            yield return new WaitForSeconds(1);
+        }
+        myButton.gameObject.SetActive(false);
     }
 }
