@@ -34,12 +34,12 @@ public class AdDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Advertisement.isInitialized && !adStarted)
-        {
-            Advertisement.Load(myAdUnitId);
-            Advertisement.Show(myAdUnitId);
-            adStarted = true;
-        }
+        // if (Advertisement.isInitialized && !adStarted)
+        // {
+        //     Advertisement.Load(myAdUnitId);
+        //     Advertisement.Show(myAdUnitId);
+        //     adStarted = true;
+        // }
 
     }
 }
