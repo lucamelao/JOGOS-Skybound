@@ -16,7 +16,6 @@ namespace Game.Player
     public override void Enter ()
     {
       base.Enter();
-      Debug.Log ("Enter Fly");
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;
       gameObject.GetComponent<Animator>().Play("Gliding");
@@ -25,7 +24,6 @@ namespace Game.Player
     public override void Exit ()
     {
       m_Inputs.Player.Press.canceled -= OnPress;
-      Debug.Log ("Exit Fly");
     }
 
     public override void FixedUpdate ()
@@ -43,7 +41,7 @@ namespace Game.Player
     //check collision with tag platform
     public override void OnCollisionEnter2D(Collision2D col)
     {
-      Debug.Log("Collision");
+      base.OnCollisionEnter2D(col);
       if(col.gameObject.tag == "Platform")
       {
         MakeTransition(StateTransition.START_RUN);

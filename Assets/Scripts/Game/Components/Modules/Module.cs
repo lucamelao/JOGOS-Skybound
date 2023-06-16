@@ -10,8 +10,6 @@ namespace Modules
     [SerializeField] private float speed;
     void OnTriggerEnter2D(Collider2D other)
     {
-      Debug.Log("COLLISIONNnnnnnnnnNNNNNNNN");
-      Debug.Log(other.gameObject.tag);
       if (other.gameObject.tag == "EOM")
       {
         Destroy(gameObject);
