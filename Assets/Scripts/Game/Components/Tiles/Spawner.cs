@@ -65,6 +65,7 @@ namespace Tiles
         if (Input.GetKeyDown(KeyCode.R))
         {
          tile.ChangeSeason();
+         gameObject.GetComponent<Background>().ChangeSeason();
         }
       }
 
