@@ -75,7 +75,7 @@ public class Spawner : MonoBehaviour, IsManager
 
     void SpawnModule()
     {
-      GameObject newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + spawnedModules.Count * 25, yPos, 0), Quaternion.identity);
+      GameObject newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + spawnedModules.Count * 26, yPos, 0), Quaternion.identity);
       newTile.GetComponent<Module>().Speed = Speed;
       spawnedModules.Enqueue(newTile);
     }
