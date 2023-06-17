@@ -196,7 +196,6 @@ GameObject:
   m_Component:
   - component: {fileID: 252176712}
   - component: {fileID: 252176713}
-  - component: {fileID: 252176714}
   - component: {fileID: 252176716}
   - component: {fileID: 252176715}
   - component: {fileID: 252176717}
@@ -250,18 +249,6 @@ MonoBehaviour:
   yPos: 0
   maxCapacity: 5
   levelManager: {fileID: 252176716}
---- !u!114 &252176714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252176710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 350fdc9b9a6c34bc0bdbd4530544b87e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &252176715
 MonoBehaviour:
   m_ObjectHideFlags: 0
