@@ -15,6 +15,8 @@ namespace Game.Player
 
     public override void Enter ()
     {
+      AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(2);
       base.Enter();
       AudioManager audioManager = gameObject.GetComponent<AudioManager>();
 			audioManager.PlaySound(2);

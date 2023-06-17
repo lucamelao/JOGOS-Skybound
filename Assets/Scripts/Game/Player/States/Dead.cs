@@ -26,6 +26,7 @@ namespace Game.Player
 			audioManager.PlaySound(4);
 			audioManager.PlaySound(3);
 			audioManager.PlaySound(7);
+
       		gameObject.GetComponent<Animator>().speed = 0;
 			gravityScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
 			gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
