@@ -16,6 +16,8 @@ namespace Game.Player
     public override void Enter ()
     {
       base.Enter();
+      AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(2);
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;
       gameObject.GetComponent<Animator>().Play("Gliding");

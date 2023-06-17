@@ -22,6 +22,8 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
+			AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(6);
 			StartCoroutine(WaitAndRun());
 		}
 

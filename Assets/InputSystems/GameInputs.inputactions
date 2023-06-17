@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputs",
+    "name": "GameInputs",
     "maps": [
         {
             "name": "Player",
@@ -20,6 +20,17 @@
                     "name": "",
                     "id": "d28e9ca1-6451-4042-9a39-e22553ac6d9c",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7201cf1b-6335-4519-b63e-de3b8618eeb2",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

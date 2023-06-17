@@ -12,6 +12,7 @@ namespace Game.Player
 	public float jumpForce = 300;
     public float airForceConstant;
 	public GameObject glider;
+	private bool hasWatchedAd = false;
     private StateMachine<PlayerStateMachine, StateID, StateTransition> m_FSM;
     public StateMachine<PlayerStateMachine, StateID, StateTransition> FSM
     {
@@ -53,10 +54,16 @@ namespace Game.Player
 			if(m_FSM.CurrentState.StateID == StateID.DEAD) return;
 			m_FSM.OnCollisionEnter2D(col);
 			if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
-      {
-        SetStop();
-				StartCoroutine(Waiter());
-      }
+      		{
+				if (!hasWatchedAd)
+				{
+					SetStop();
+					StartCoroutine(Waiter());
+					hasWatchedAd = true;
+				} else {
+					EndGame();
+				}
+      		}
 		}
 		void Continue()
 		{
@@ -108,7 +115,7 @@ namespace Game.Player
 		int t = 0;
 		while(adButton.adState == AdState.Watching) 
 		{
-			if(t > 100) {
+			if(t > 1000) {
 				EndGame();
 				yield break;
 			}
