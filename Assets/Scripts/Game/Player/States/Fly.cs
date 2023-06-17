@@ -16,6 +16,8 @@ namespace Game.Player
 
     public override void Enter ()
     {
+      AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(2);
       base.Enter();
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;

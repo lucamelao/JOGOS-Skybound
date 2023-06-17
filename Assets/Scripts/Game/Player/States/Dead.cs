@@ -22,13 +22,19 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
-      		gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(false);
-			gameObject.SetActive(false);
+			AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(4);
+			audioManager.PlaySound(3);
+
+			audioManager.PlaySound(7);
+
+      		// gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(false);
+			// gameObject.SetActive(false);
 		}
 
     public override void Continue()
     {
-			gameObject.SetActive(true);
+		gameObject.SetActive(true);
       StartCoroutine(WaitAndRun());
     }
 
