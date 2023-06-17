@@ -7,10 +7,11 @@ namespace Game.Player
 {
   public class PlayerStateMachine : MonoBehaviour 
   {
-	  public LevelManager m_LevelManager;
-		public AdButton adButton;
-	  public float jumpForce = 300;
-	  public GameObject glider;
+	public LevelManager m_LevelManager;
+	public AdButton adButton;
+	public float jumpForce = 300;
+    public float airForceConstant;
+	public GameObject glider;
     private StateMachine<PlayerStateMachine, StateID, StateTransition> m_FSM;
     public StateMachine<PlayerStateMachine, StateID, StateTransition> FSM
     {

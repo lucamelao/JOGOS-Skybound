@@ -6,7 +6,6 @@ using Overtime.FSM;
 namespace Game.Player
 {
   public class Fly : StateBase {
-    [SerializeField] private float airForceConstant;
     public override void BuildTransitions ()
     {
       base.BuildTransitions();
@@ -59,9 +58,9 @@ namespace Game.Player
       float velo = gameObject.GetComponent<Rigidbody2D>().velocity.y;
       float airForce;
       if (velo<0) {
-        airForce = velo*velo * airForceConstant;
+        airForce = velo*velo *  gameObject.GetComponent<PlayerStateMachine>().airForceConstant;
       } else {
-        airForce = -velo*velo * airForceConstant;
+        airForce = -velo*velo *  gameObject.GetComponent<PlayerStateMachine>().airForceConstant;
       }
       gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * airForce);
     }

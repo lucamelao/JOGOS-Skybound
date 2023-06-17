@@ -9,9 +9,10 @@ public class PointsManager : MonoBehaviour
 
     public float Points { get; private set; }
     public int PointsPerSecond { get; set; } = 1;
-    // public TextMeshProUGUI PointsText;
+    public TextMeshProUGUI PointsText;
     public Score score;
     private bool _hasEnded = false;
+    private bool isStopped = false;
 
     public void EndGame() 
     {
@@ -26,9 +27,19 @@ public class PointsManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-      if(_hasEnded) return;
+      if(_hasEnded || isStopped) return;
       UpdatePoints();
       UpdateText();
+    }
+
+    public void SetStop() 
+    {
+      isStopped = true;
+    }
+
+    public void SetContinue() 
+    {
+      isStopped = false;
     }
 
     void UpdatePoints() 
@@ -38,7 +49,7 @@ public class PointsManager : MonoBehaviour
 
     void UpdateText() 
     {
-      // PointsText.text = $"{(int)Points}";
+      PointsText.text = $"{(int)(Points*4)}";
     }
 
 }

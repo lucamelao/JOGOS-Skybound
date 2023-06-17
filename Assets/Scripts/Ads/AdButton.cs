@@ -50,6 +50,7 @@ public class AdButton : MonoBehaviour
     {
         for (int i = 0; i < seconds * 100; i++)
         {
+            if(adState != AdState.None) break;
             adsBar.UpdateBar(i / 100f);
             yield return new WaitForSeconds(0.01f);
         }
