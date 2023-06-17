@@ -15,7 +15,6 @@ public class DataSaver
         var json = JsonConvert.SerializeObject(dataToSave);
         byte[] jsonByte = Encoding.ASCII.GetBytes(json);
 
-        Debug.Log("Saved Data: " + json);
 
         //Create Directory if it does not exist
         if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
@@ -27,12 +26,9 @@ public class DataSaver
         try
         {
             File.WriteAllBytes(tempPath, jsonByte);
-            Debug.Log("Saved Data to: " + tempPath.Replace("/", "\\"));
         }
         catch (Exception e)
         {
-            Debug.LogWarning("Failed To PlayerInfo Data to: " + tempPath.Replace("/", "\\"));
-            Debug.LogWarning("Error: " + e.Message);
         }
     }
 
@@ -45,13 +41,11 @@ public class DataSaver
         //Exit if Directory or File does not exist
         if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
         {
-            Debug.LogWarning("Directory does not exist");
             return default(T);
         }
 
         if (!File.Exists(tempPath))
         {
-            Debug.Log("File does not exist");
             return default(T);
         }
 
@@ -60,12 +54,9 @@ public class DataSaver
         try
         {
             jsonByte = File.ReadAllBytes(tempPath);
-            Debug.Log("Loaded Data from: " + tempPath.Replace("/", "\\"));
         }
         catch (Exception e)
         {
-            Debug.LogWarning("Failed To Load Data from: " + tempPath.Replace("/", "\\"));
-            Debug.LogWarning("Error: " + e.Message);
         }
 
         //Convert to json string
@@ -73,7 +64,6 @@ public class DataSaver
 
         //Convert to Object
         object data = JsonConvert.DeserializeObject<T>(jsonData);
-        Debug.Log("PlayerInfo Data Loaded: " + jsonData);
         return (T)Convert.ChangeType(data, typeof(T));
     }
 
@@ -88,25 +78,21 @@ public class DataSaver
         //Exit if Directory or File does not exist
         if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
         {
-            Debug.LogWarning("Directory does not exist");
             return false;
         }
 
         if (!File.Exists(tempPath))
         {
-            Debug.Log("File does not exist");
             return false;
         }
 
         try
         {
             File.Delete(tempPath);
-            Debug.Log("Data deleted from: " + tempPath.Replace("/", "\\"));
             success = true;
         }
         catch (Exception e)
         {
-            Debug.LogWarning("Failed To Delete Data: " + e.Message);
         }
 
         return success;
@@ -118,13 +104,11 @@ public class DataSaver
       tempPath = Path.Combine(tempPath, dataFileName + ".txt");
       if (!Directory.Exists(Path.GetDirectoryName(tempPath)))
       {
-          Debug.LogWarning("Directory does not exist");
           return false;
       }
 
       if (!File.Exists(tempPath))
       {
-          Debug.Log("File does not exist");
           return false;
       }
       return true;

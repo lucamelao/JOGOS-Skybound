@@ -9,57 +9,38 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public AdDisplay adDisplay;
 
-    void Awake()
+    void Start()
     {
       _adUnitId = _androidAdUnitRewardedId;
     }
 
     public void LoadAndShowAd()
     {
-        if(!adDisplay.intitComplete) 
+        Debug.Log("LoadAndShowAd first");
+        if(adDisplay.initError) 
         {
             adButton.adState = AdState.Skipped;
             return;
         }
         if(adButton.adState != AdState.Watching) return;
         LoadAd();
+        Debug.Log("LoadAndShowAd second");
     }
 
 
     void LoadAd()
     {
-        Debug.Log("Loading Ad: " + _adUnitId);
         Advertisement.Load(_adUnitId, this);
     }
 
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        Debug.Log("Ad Loaded: " + adUnitId);
         ShowAd();
     }
 
     void ShowAd()
     {
         Advertisement.Show(_adUnitId, this);
-    }
-
-    private void HandleShowResult(ShowResult result)
-    {
-        switch (result)
-        {
-            case ShowResult.Finished:
-                Debug.Log("The ad was successfully shown.");
-                adButton.adState = AdState.Completed;
-                break;
-            case ShowResult.Skipped:
-                adButton.adState = AdState.Skipped;
-                Debug.Log("The ad was skipped before reaching the end.");
-                break;
-            case ShowResult.Failed:
-                adButton.adState = AdState.Skipped;
-                Debug.LogError("The ad failed to be shown.");
-                break;
-        }
     }
 
 public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
@@ -82,14 +63,14 @@ public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState 
 
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
     {
-        adButton.adState = AdState.Skipped;
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
+        adButton.adState = AdState.Skipped;
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
-        adButton.adState = AdState.Skipped;
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
+        adButton.adState = AdState.Skipped;
     }
 
     public void OnUnityAdsShowStart(string adUnitId) { }

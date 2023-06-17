@@ -62,6 +62,7 @@ namespace Game.Player
 					hasWatchedAd = true;
 				} else {
 					EndGame();
+					hasWatchedAd = false;
 				}
       		}
 		}

@@ -12,7 +12,7 @@ public class AdDisplay : MonoBehaviour, IUnityAdsInitializationListener
     public string adUnitIdIOS = "Interstitial_iOS";
 
     public string myAdUnitId;
-    public bool intitComplete = false;
+    public bool initError = false;
     private bool testMode = false;
 
 
@@ -20,25 +20,20 @@ public class AdDisplay : MonoBehaviour, IUnityAdsInitializationListener
     // Start is called before the first frame update
     void Start()
     {
-        #if UNITY_IOS
-	        Advertisement.Initialize(myGameIdIOS, testMode, this);
-	        myAdUnitId = adUnitIdIOS;
-        #else
-                Advertisement.Initialize(myGameIdAndroid, testMode, this);
-                myAdUnitId = adUnitIdAndroid;
-        #endif
-
+        Advertisement.Initialize(myGameIdAndroid, testMode, this);
+        myAdUnitId = adUnitIdAndroid;
+        initError = false;
     }
 
     public void OnInitializationComplete() 
     {
         Debug.Log("Unity Ads initialization complete.");
-        intitComplete = true;
+        initError = false;
     }
 
     public void  OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-        intitComplete = false;
+        initError = true;
         Debug.Log(message);
     }
 
