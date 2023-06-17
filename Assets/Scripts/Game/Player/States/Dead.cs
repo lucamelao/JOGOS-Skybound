@@ -22,13 +22,14 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
-      		gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(false);
-			gameObject.SetActive(false);
+		}
+
+		public override void Exit () 
+		{
 		}
 
     public override void Continue()
     {
-			gameObject.SetActive(true);
       StartCoroutine(WaitAndRun());
     }
 

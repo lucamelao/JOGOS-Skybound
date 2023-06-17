@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Tiles;
 using Game.Player;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,21 +14,27 @@ public class LevelManager : MonoBehaviour
     public int CurrDifficulty {get; private set;} = 1;
     private float _prevSpeed;
     private int accelerator = 1;
+    
     public SpriteRenderer spriteRenderer;
     public Sprite[] gliders;
+
+    private bool isStopped = false;
     public void EndGame() 
     {
       _pointsManager.EndGame();
+      SceneManager.LoadScene("StartMenu");
     }
 
     public void SetStop() 
     {
+      isStopped = true;
       _prevSpeed = _spawner.Speed;
       _spawner.Speed = 0f;
       _spawner.ChangeMouleSpeed();
     }
     public void SetContinue() 
     {
+      isStopped = false;
       _spawner.Speed = _prevSpeed;
       _spawner.ChangeMouleSpeed();
     }
@@ -43,6 +50,7 @@ public class LevelManager : MonoBehaviour
 
     void CheckDifficulty()
     {
+      if(isStopped) return;
       if(accelerator == 60) return;
       if (_pointsManager.Points > accelerator) {
         _player.GetComponent<Rigidbody2D>().gravityScale += 0.8f/6f;
