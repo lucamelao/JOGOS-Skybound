@@ -22,7 +22,12 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
-      		gameObject.GetComponent<Animator>().speed = 0;
+			AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(4);
+			audioManager.PlaySound(3);
+			audioManager.PlaySound(7);
+
+      gameObject.GetComponent<Animator>().speed = 0;
 			gravityScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
 			gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
 			gameObject.GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
