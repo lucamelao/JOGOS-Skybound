@@ -2545,6 +2545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adButton: {fileID: 736568998}
+  adDisplay: {fileID: 1616994565}
 --- !u!4 &1616994564
 Transform:
   m_ObjectHideFlags: 0
@@ -2577,7 +2578,7 @@ MonoBehaviour:
   adUnitIdAndroid: Interstitial_Android
   adUnitIdIOS: Interstitial_iOS
   myAdUnitId: 
-  adStarted: 0
+  intitComplete: 0
 --- !u!1 &1651547101
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,7 @@ public class AdDisplay : MonoBehaviour, IUnityAdsInitializationListener
     public string adUnitIdIOS = "Interstitial_iOS";
 
     public string myAdUnitId;
-    public bool adStarted;
-
+    public bool intitComplete = false;
     private bool testMode = false;
 
 
@@ -31,10 +30,15 @@ public class AdDisplay : MonoBehaviour, IUnityAdsInitializationListener
 
     }
 
-    public void OnInitializationComplete() {}
+    public void OnInitializationComplete() 
+    {
+        Debug.Log("Unity Ads initialization complete.");
+        intitComplete = true;
+    }
 
     public void  OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
+        intitComplete = false;
         Debug.Log(message);
     }
 

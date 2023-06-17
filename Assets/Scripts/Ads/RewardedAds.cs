@@ -7,6 +7,8 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     private string _adUnitId = null;
     public AdButton adButton;
 
+    public AdDisplay adDisplay;
+
     void Awake()
     {
       _adUnitId = _androidAdUnitRewardedId;
@@ -14,9 +16,13 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public void LoadAndShowAd()
     {
+        if(!adDisplay.intitComplete) 
+        {
+            adButton.adState = AdState.Skipped;
+            return;
+        }
         if(adButton.adState != AdState.Watching) return;
         LoadAd();
-        ShowAd();
     }
 
 
@@ -29,6 +35,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("Ad Loaded: " + adUnitId);
+        ShowAd();
     }
 
     void ShowAd()
@@ -75,11 +82,13 @@ public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState 
 
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
     {
+        adButton.adState = AdState.Skipped;
         Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
+        adButton.adState = AdState.Skipped;
         Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
     }
 

@@ -23,7 +23,6 @@ public sealed class Treasury : SingletonBase<Treasury>
 
     protected override void Init()
     {
-      Debug.Log("Init: " + Application.persistentDataPath);
       TreasuryData data;
       if(!DataSaver.CheckPath(_dataPath)) {
         data = new TreasuryData();
@@ -33,7 +32,6 @@ public sealed class Treasury : SingletonBase<Treasury>
 
       data = DataSaver.LoadData<TreasuryData>(_dataPath);
       Balance = data.Balance;
-      Debug.Log($"Balance: {Balance}");
     }
 
     public void Save()
