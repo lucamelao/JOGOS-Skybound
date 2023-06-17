@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     public int CurrDifficulty {get; private set;} = 1;
     private float _prevSpeed;
     private int accelerator = 1;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] gliders;
     public void EndGame() 
     {
       _pointsManager.EndGame();
@@ -31,6 +33,7 @@ public class LevelManager : MonoBehaviour
     }
     void Start()
     {
+      spriteRenderer.sprite = gliders[PlayerPrefs.GetInt("selectedGlider")]; 
       _seasonalTile.Init();
     }
     void FixedUpdate()
