@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 using Modules;
 using Tiles;
 
-public class Spawner : MonoBehaviour, IsManager
+public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> modules;
 
@@ -19,11 +19,14 @@ public class Spawner : MonoBehaviour, IsManager
     private int lastIndex = 0;
 
     public float Speed { get; set; } = 5f;
+
+    private Treasury treasury;
     
     //[SerializeField] private GameObject parent;
 
     void Start()
     {
+      treasury = Treasury.GetInstance();
       spawnedModules = new Queue<GameObject>(maxCapacity);
       GameObject newTile = Instantiate(modules[9], new Vector3(xPos, yPos, 0), Quaternion.identity);
       newTile.GetComponent<Module>().Speed = Speed;
@@ -62,6 +65,7 @@ public class Spawner : MonoBehaviour, IsManager
       if(spawnedModules.Count < maxCapacity)
       {
         SpawnModule();
+        treasury.Receive(1);
       }
       CheckSeason();
     }
@@ -75,7 +79,7 @@ public class Spawner : MonoBehaviour, IsManager
 
     void SpawnModule()
     {
-      GameObject newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + spawnedModules.Count * 25, yPos, 0), Quaternion.identity);
+      GameObject newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + spawnedModules.Count * 26, yPos, 0), Quaternion.identity);
       newTile.GetComponent<Module>().Speed = Speed;
       spawnedModules.Enqueue(newTile);
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Advertisements;
 
-public class AdDisplay : MonoBehaviour
+public class AdDisplay : MonoBehaviour, IUnityAdsInitializationListener
 {
     public string myGameIdAndroid = "5280809";
     public string myGameIdIOS = "5280808";
@@ -22,24 +22,21 @@ public class AdDisplay : MonoBehaviour
     void Start()
     {
         #if UNITY_IOS
-	        Advertisement.Initialize(myGameIdIOS, testMode);
+	        Advertisement.Initialize(myGameIdIOS, testMode, this);
 	        myAdUnitId = adUnitIdIOS;
         #else
-                Advertisement.Initialize(myGameIdAndroid, testMode);
+                Advertisement.Initialize(myGameIdAndroid, testMode, this);
                 myAdUnitId = adUnitIdAndroid;
         #endif
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // if (Advertisement.isInitialized && !adStarted)
-        // {
-        //     Advertisement.Load(myAdUnitId);
-        //     Advertisement.Show(myAdUnitId);
-        //     adStarted = true;
-        // }
+    public void OnInitializationComplete() {}
 
+    public void  OnInitializationFailed(UnityAdsInitializationError error, string message)
+    {
+        Debug.Log(message);
     }
+
+
 }
