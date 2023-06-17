@@ -12,6 +12,12 @@ public class GliderType : MonoBehaviour
 
     public Image unlockImage;
 
+    public void Unlock()
+    {
+        unlocked = true;
+        UpdateLevelImage();
+    }
+
     private void Start() {
         slider.value = glideTime;
     }
