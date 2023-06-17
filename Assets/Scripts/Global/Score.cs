@@ -8,7 +8,7 @@ public sealed class Score : SingletonBase<Score>
 
     public int _highScore = 0;
 
-    private string _dataPath = @"Assets/Resources/SaveData/score.json";
+    private string _dataPath = "score";
 
 
     public void SetScore()
@@ -22,13 +22,14 @@ public sealed class Score : SingletonBase<Score>
 
     protected override void Init()
     {
-      if(!File.Exists(_dataPath)) {
-        Debug.Log("File does not exist");
-        return;
+      ScoreData data;
+      if(!DataSaver.CheckPath(_dataPath)) {
+        data = new ScoreData();
+        data.Score = 0;
+        DataSaver.SaveData(data, _dataPath);
       };
-      var json = File.ReadAllText(_dataPath);
-      ScoreData data = 
-                JsonConvert.DeserializeObject<ScoreData>(json);
+
+      data = DataSaver.LoadData<ScoreData>(_dataPath);
       _highScore = data.Score;
     }
 
@@ -36,8 +37,8 @@ public sealed class Score : SingletonBase<Score>
     {
       ScoreData data = new ScoreData();
       data.Score = _highScore;
-      string json = JsonConvert.SerializeObject(data);
-      File.WriteAllText(_dataPath, json);
+      DataSaver.SaveData(data, _dataPath);
+      //File.WriteAllText(_dataPath, json);
     }
 
 

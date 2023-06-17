@@ -6,26 +6,30 @@ public sealed class Glider : SingletonBase<Glider>
 {
     public bool[] GliderUnlocked {get; set; }
 
-    private string _dataPath = @"Assets/Resources/SaveData/glider.json";
+    private string _dataPath = "glider";
 
     protected override void Init()
     {
-      if(!File.Exists(_dataPath)) {
-        Debug.Log("File does not exist");
-        return;
+      GliderData data;
+      if(!DataSaver.CheckPath(_dataPath)) {
+        data = new GliderData();
+        data.Unlocked = new bool[3];
+        data.Unlocked[0] = true;
+        data.Unlocked[1] = false;
+        data.Unlocked[2] = false;
+        DataSaver.SaveData(data, _dataPath);
       };
-      var json = File.ReadAllText(_dataPath);
-      GliderData data = 
-                JsonConvert.DeserializeObject<GliderData>(json);
+
+      data = DataSaver.LoadData<GliderData>(_dataPath);
       GliderUnlocked = data.Unlocked;
     }
 
     public void Save()
     {
-        GliderData data = new GliderData();
-        data.Unlocked = GliderUnlocked;
-        var json = JsonConvert.SerializeObject(data);
-        File.WriteAllText(_dataPath, json);
+      GliderData data = new GliderData();
+      data.Unlocked = GliderUnlocked;
+      DataSaver.SaveData(data, _dataPath);
+        //File.WriteAllText(_dataPath, json);
     }
 
 

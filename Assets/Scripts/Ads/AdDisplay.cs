@@ -14,7 +14,7 @@ public class AdDisplay : MonoBehaviour, IUnityAdsInitializationListener
     public string myAdUnitId;
     public bool adStarted;
 
-    private bool testMode = true;
+    private bool testMode = false;
 
 
 

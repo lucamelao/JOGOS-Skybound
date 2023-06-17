@@ -67,7 +67,7 @@ public class GliderSelection : MonoBehaviour
     public void StartGame(){
         if(glider.GliderUnlocked[selecetedGlider]){
             PlayerPrefs.SetInt("selectedGlider", selecetedGlider);
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Main");
         }
         else{
             OpenShop();

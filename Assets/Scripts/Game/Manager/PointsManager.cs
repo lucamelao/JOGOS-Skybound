@@ -44,12 +44,12 @@ public class PointsManager : MonoBehaviour
 
     void UpdatePoints() 
     {
-      Points += PointsPerSecond * Time.deltaTime;
+      Points += PointsPerSecond * Time.deltaTime * 3;
     }
 
     void UpdateText() 
     {
-      PointsText.text = $"{(int)(Points*4)}";
+      PointsText.text = $"{(int)(Points)}";
     }
 
 }

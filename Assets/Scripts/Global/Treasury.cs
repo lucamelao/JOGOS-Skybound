@@ -6,7 +6,7 @@ public sealed class Treasury : SingletonBase<Treasury>
 {
     public int Balance {get; private set; }= 100;
 
-    private string _dataPath = @"Assets/Resources/SaveData/treasury.json";
+    private string _dataPath = "treasury";
 
 
     public void Receive(int amount)
@@ -23,28 +23,24 @@ public sealed class Treasury : SingletonBase<Treasury>
 
     protected override void Init()
     {
-      //log curr directory
-      // string[] filePaths = Directory.GetFiles(_dataPath);
-      // foreach (string filePath in filePaths)
-      // {
-      //   Debug.Log(filePath);
-      // }
-      if(!File.Exists(_dataPath)) {
-        Debug.Log("File does not exist");
-        return;
+      Debug.Log("Init: " + Application.persistentDataPath);
+      TreasuryData data;
+      if(!DataSaver.CheckPath(_dataPath)) {
+        data = new TreasuryData();
+        data.Balance = 0;
+        DataSaver.SaveData(data, _dataPath);
       };
-      var json = File.ReadAllText(_dataPath);
-      TreasuryData data = 
-                JsonConvert.DeserializeObject<TreasuryData>(json);
+
+      data = DataSaver.LoadData<TreasuryData>(_dataPath);
       Balance = data.Balance;
+      Debug.Log($"Balance: {Balance}");
     }
 
     public void Save()
     {
       TreasuryData data = new TreasuryData();
       data.Balance = Balance;
-      string json = JsonConvert.SerializeObject(data);
-      File.WriteAllText(_dataPath, json);
+      DataSaver.SaveData(data, _dataPath);
       Destroy();
     }
 
