@@ -22,6 +22,7 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
+      		gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(false);
 			gameObject.SetActive(false);
 		}
 

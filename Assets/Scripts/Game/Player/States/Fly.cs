@@ -20,6 +20,7 @@ namespace Game.Player
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;
       gameObject.GetComponent<Animator>().Play("Gliding");
+      gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(true);
     }
 
     public override void Exit ()

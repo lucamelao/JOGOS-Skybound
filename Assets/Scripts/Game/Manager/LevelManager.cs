@@ -40,11 +40,11 @@ public class LevelManager : MonoBehaviour
 
     void CheckDifficulty()
     {
-      if(_seasonalTile.season == TileSeason.Sky) return;
+      if(accelerator == 60) return;
       if (_pointsManager.Points > accelerator) {
-        _player.GetComponent<Rigidbody2D>().gravityScale += 0.2f;
-        _player.GetComponent<PlayerStateMachine>().jumpForce += 17.5f;
-        _spawner.Speed = _spawner.Speed + 0.25f;
+        _player.GetComponent<Rigidbody2D>().gravityScale += 0.8f/6f;
+        _player.GetComponent<PlayerStateMachine>().jumpForce += 35.1f/3f;
+        _spawner.Speed = _spawner.Speed + 1f/6f;
         _spawner.ChangeMouleSpeed();
         accelerator++;
       }

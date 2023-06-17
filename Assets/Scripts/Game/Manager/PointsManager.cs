@@ -9,7 +9,7 @@ public class PointsManager : MonoBehaviour
 
     public float Points { get; private set; }
     public int PointsPerSecond { get; set; } = 1;
-    public TextMeshProUGUI PointsText;
+    // public TextMeshProUGUI PointsText;
     public Score score;
     private bool _hasEnded = false;
 
@@ -38,7 +38,7 @@ public class PointsManager : MonoBehaviour
 
     void UpdateText() 
     {
-      PointsText.text = $"{(int)Points}";
+      // PointsText.text = $"{(int)Points}";
     }
 
 }

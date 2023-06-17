@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour, IsManager
     [SerializeField] private int maxCapacity = 5;
     [SerializeField] private LevelManager levelManager;
     private Queue<GameObject> spawnedModules;
+    private int lastIndex = 0;
 
     public float Speed { get; set; } = 5f;
     
@@ -24,9 +25,12 @@ public class Spawner : MonoBehaviour, IsManager
     void Start()
     {
       spawnedModules = new Queue<GameObject>(maxCapacity);
-      for(int i = 0; i < maxCapacity; i++)
+      GameObject newTile = Instantiate(modules[9], new Vector3(xPos, yPos, 0), Quaternion.identity);
+      newTile.GetComponent<Module>().Speed = Speed;
+      spawnedModules.Enqueue(newTile);
+      for(int i = 1; i < maxCapacity; i++)
       {
-        GameObject newTile = Instantiate(modules[0], new Vector3(xPos + i * 20, yPos, 0), Quaternion.identity);
+        newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + i * 25, yPos, 0), Quaternion.identity);
         newTile.GetComponent<Module>().Speed = Speed;
         spawnedModules.Enqueue(newTile);
       }
@@ -71,8 +75,7 @@ public class Spawner : MonoBehaviour, IsManager
 
     void SpawnModule()
     {
-      int index = GetSpawnIndex();
-      GameObject newTile = Instantiate(modules[index], new Vector3(xPos + spawnedModules.Count * 20, yPos, 0), Quaternion.identity);
+      GameObject newTile = Instantiate(modules[GetSpawnIndex()], new Vector3(xPos + spawnedModules.Count * 25, yPos, 0), Quaternion.identity);
       newTile.GetComponent<Module>().Speed = Speed;
       spawnedModules.Enqueue(newTile);
     }
@@ -88,6 +91,27 @@ public class Spawner : MonoBehaviour, IsManager
 
     int GetSpawnIndex()
     {
-      return Random.Range(0, levelManager.CurrDifficulty);
+      int index = lastIndex, random = Random.Range(0, 99);
+      while (index == lastIndex)
+      {
+        random = Random.Range(0, 99);
+        switch (levelManager.CurrDifficulty)
+        {
+          case 1:
+            index = random/33;
+            break;
+          case 2:
+            if (random < 33) {index = random/11;}
+            else {index = 3+(random-33)/22;}
+            break;
+          default:
+            if (random < 18) {index = random/6;}
+            else if (random < 48) {index = 3+(random-18)/10;}
+            else {index = 6+(random-48)/17;}
+            break;
+        }
+      }
+      lastIndex = index;
+      return index;
     }
 }

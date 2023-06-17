@@ -19,6 +19,7 @@ namespace Game.Player
       m_currentPressTransition = StateTransition.START_FLY;
       m_Inputs.Player.Press.performed += OnPress;
       gameObject.GetComponent<Animator>().Play("Falling");
+      gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(false);
     }
 
     public override void Exit ()

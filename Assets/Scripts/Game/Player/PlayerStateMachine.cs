@@ -9,6 +9,7 @@ namespace Game.Player
   {
 	  public LevelManager m_LevelManager;
 	  public float jumpForce = 300;
+	  public GameObject glider;
     private StateMachine<PlayerStateMachine, StateID, StateTransition> m_FSM;
     public StateMachine<PlayerStateMachine, StateID, StateTransition> FSM
     {
