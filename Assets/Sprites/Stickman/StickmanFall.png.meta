@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3d8166608d1f541329e991f13327affb
+guid: 10e71ef34219145b7b6033a9126dd586
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -101,33 +101,219 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: StickmanFall_0
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 1088
+        width: 358
+        height: 899
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35ac5e7fbc21442e1bfc88af7afbf244
+      internalID: 1542104318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_1
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1076
+        width: 467
+        height: 846
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54190ce50b34e42be920ecf46f6f9296
+      internalID: -1931521551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_2
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 1058
+        width: 422
+        height: 859
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c90c46dc34344ba4a621dbf018bf24d
+      internalID: 1656865036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_3
+      rect:
+        serializedVersion: 2
+        x: 2165
+        y: 1066
+        width: 357
+        height: 853
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbdf81034775d4c5a916db9733ae4e8f
+      internalID: -1352278844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_4
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 1066
+        width: 377
+        height: 856
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e250609f6c0eb42aeb7b315f6046481a
+      internalID: 1113597200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 406
+        height: 885
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1f652381aa0147bf819f5cd6675cecb
+      internalID: -2146112766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_6
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 10
+        width: 420
+        height: 874
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56134baf13f954d9cb45f88bb3384425
+      internalID: 1067815367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_7
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 2
+        width: 430
+        height: 850
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b825eda93ac9c4c09a1df6a55699c08e
+      internalID: 494336628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_8
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 19
+        width: 505
+        height: 842
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac35128426db4d9191d8fb87b114b75
+      internalID: 91939868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StickmanFall_9
+      rect:
+        serializedVersion: 2
+        x: 2683
+        y: 19
+        width: 415
+        height: 897
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc576fd0d8f54ad8aff79bfb3bb2293
+      internalID: 1976191251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -138,7 +324,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      StickmanFall_0: 1542104318
+      StickmanFall_1: -1931521551
+      StickmanFall_2: 1656865036
+      StickmanFall_3: -1352278844
+      StickmanFall_4: 1113597200
+      StickmanFall_5: -2146112766
+      StickmanFall_6: 1067815367
+      StickmanFall_7: 494336628
+      StickmanFall_8: 91939868
+      StickmanFall_9: 1976191251
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

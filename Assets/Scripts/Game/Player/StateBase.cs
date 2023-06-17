@@ -14,6 +14,8 @@ namespace Game.Player
     FALL,
     LAND,
     FLY,
+
+    DEAD,
   }
 
 	public enum StateTransition
@@ -28,6 +30,8 @@ namespace Game.Player
     STOP_LAND,
     START_FLY,
     STOP_FLY,
+
+    START_DEAD,
   }
 
 	public abstract class StateBase : State<PlayerStateMachine, StateID, StateTransition>
@@ -37,7 +41,7 @@ namespace Game.Player
     protected static StateTransition m_currentPressTransition;
 		public override void BuildTransitions ()
 		{
-			
+			AddTransition(StateTransition.START_DEAD, StateID.DEAD);
 		}
 
 		public override void Enter ()
@@ -59,7 +63,17 @@ namespace Game.Player
 			
 		}
 
-    public override void OnCollisionEnter2D (Collision2D collision) {}
+    public override void SetStop()
+    {
+    }
+
+    public override void OnCollisionEnter2D (Collision2D col) 
+    {
+      // if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
+      // {
+      //   MakeTransition(StateTransition.START_DEAD);
+      // }
+    }
 
     protected void GetGameInput()
     {

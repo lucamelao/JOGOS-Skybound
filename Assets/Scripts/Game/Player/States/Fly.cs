@@ -6,9 +6,9 @@ using Overtime.FSM;
 namespace Game.Player
 {
   public class Fly : StateBase {
-    [SerializeField] private float glideForce;
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_FLY, StateID.FALL);
       AddTransition (StateTransition.START_RUN, StateID.RUN);
     }
@@ -16,15 +16,17 @@ namespace Game.Player
     public override void Enter ()
     {
       base.Enter();
-      Debug.Log ("Enter Fly");
+      AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(2);
       m_currentPressTransition = StateTransition.STOP_FLY;
       m_Inputs.Player.Press.canceled += OnPress;
+      gameObject.GetComponent<Animator>().Play("Gliding");
+      gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(true);
     }
 
     public override void Exit ()
     {
       m_Inputs.Player.Press.canceled -= OnPress;
-      Debug.Log ("Exit Fly");
     }
 
     public override void FixedUpdate ()
@@ -42,16 +44,27 @@ namespace Game.Player
     //check collision with tag platform
     public override void OnCollisionEnter2D(Collision2D col)
     {
-      Debug.Log("Collision");
+      base.OnCollisionEnter2D(col);
       if(col.gameObject.tag == "Platform")
       {
         MakeTransition(StateTransition.START_RUN);
+      }
+      else if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
+      {
+        MakeTransition(StateTransition.START_DEAD);
       }
     }
 
     private void ApplyForce()
     {
-      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * glideForce);
+      float velo = gameObject.GetComponent<Rigidbody2D>().velocity.y;
+      float airForce;
+      if (velo<0) {
+        airForce = velo*velo *  gameObject.GetComponent<PlayerStateMachine>().airForceConstant;
+      } else {
+        airForce = -velo*velo *  gameObject.GetComponent<PlayerStateMachine>().airForceConstant;
+      }
+      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * airForce);
     }
   }
 }

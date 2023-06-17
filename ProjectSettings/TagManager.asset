@@ -7,11 +7,14 @@ TagManager:
   - Platform
   - Module
   - EOM
+  - Floor
+  - Spike
+  - Wall
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

@@ -7,22 +7,22 @@ namespace Game.Player
 {
   public class Jump : StateBase {
 
-    [SerializeField] private float jumpForce;
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_JUMP, StateID.FALL);
     }
 
     public override void Enter ()
     {
-      Debug.Log ("Enter Jump");
+      AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(1);
       ApplyForce();
       MakeTransition(StateTransition.STOP_JUMP);
     }
 
     public override void Exit ()
     {
-      Debug.Log ("Exit Jump");
     }
 
     public override void FixedUpdate ()
@@ -35,9 +35,17 @@ namespace Game.Player
     {
     }
 
+    public override void OnCollisionEnter2D (Collision2D col) 
+    {
+      if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
+      {
+        MakeTransition(StateTransition.START_DEAD);
+      }
+    }
+
     private void ApplyForce()
     {
-      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * jumpForce);
+      gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * gameObject.GetComponent<PlayerStateMachine>().jumpForce);
     }
   }
 }

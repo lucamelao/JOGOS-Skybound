@@ -11,6 +11,7 @@ namespace Game.Player
 
 		public override void BuildTransitions ()
 		{
+			base.BuildTransitions();
 			AddTransition(StateTransition.START_RUN, StateID.RUN);
 		}
 
@@ -21,6 +22,8 @@ namespace Game.Player
 
 		public override void Enter ()
 		{
+			AudioManager audioManager = gameObject.GetComponent<AudioManager>();
+			audioManager.PlaySound(6);
 			StartCoroutine(WaitAndRun());
 		}
 

@@ -122,6 +122,18 @@ namespace Overtime.FSM
 			m_StatesDictionary = null;
 		}
 
+		public void Continue()
+		{
+			if(m_CurrentState != null)
+				m_CurrentState.Continue();
+		}
+
+		public void SetStop () 
+		{
+			if(m_CurrentState != null)
+				m_CurrentState.SetStop();
+		}
+
 		#region UPDATES
 		public void Update()
 		{
@@ -178,6 +190,7 @@ namespace Overtime.FSM
 			if(m_CurrentState != null)
 				m_CurrentState.OnCollisionExit(collision);
 		}
+
 		#endregion
 
 		public void SetInitialState(TEnumState enumState)

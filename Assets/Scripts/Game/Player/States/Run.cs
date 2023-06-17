@@ -9,6 +9,7 @@ namespace Game.Player
   public class Run : StateBase {
     public override void BuildTransitions ()
     {
+      base.BuildTransitions();
       AddTransition (StateTransition.STOP_RUN, StateID.FALL);
       AddTransition (StateTransition.START_JUMP, StateID.JUMP);
     }
@@ -17,13 +18,21 @@ namespace Game.Player
       base.Enter();
       m_currentPressTransition = StateTransition.START_JUMP;
       m_Inputs.Player.Press.performed += OnPress;
-      Debug.Log ("Enter Run");
+      gameObject.GetComponent<Animator>().Play("Running");
+      gameObject.GetComponent<PlayerStateMachine>().glider.SetActive(false);
     }
 
     public override void Exit ()
     {
       m_Inputs.Player.Press.performed -= OnPress;
-      Debug.Log ("Exit Run");
+    }
+
+    public override void OnCollisionEnter2D (Collision2D col) 
+    {
+      if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
+      {
+        MakeTransition(StateTransition.START_DEAD);
+      }
     }
 
     public override void FixedUpdate ()
