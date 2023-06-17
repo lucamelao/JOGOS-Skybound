@@ -8,6 +8,7 @@ namespace Game.Player
   public class PlayerStateMachine : MonoBehaviour 
   {
 	  public LevelManager m_LevelManager;
+		public AdButton adButton;
 	  public float jumpForce = 300;
 	  public GameObject glider;
     private StateMachine<PlayerStateMachine, StateID, StateTransition> m_FSM;
@@ -48,11 +49,12 @@ namespace Game.Player
 
 		void OnCollisionEnter2D(Collision2D col)
 		{
+			if(m_FSM.CurrentState.StateID == StateID.DEAD) return;
 			m_FSM.OnCollisionEnter2D(col);
 			if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
       {
         SetStop();
-				EndGame();
+				StartCoroutine(Waiter());
       }
 		}
 		void Continue()
@@ -71,12 +73,50 @@ namespace Game.Player
 		void SetStop()
 		{
 			m_LevelManager.SetStop();
+			adButton.Init();
 		}
 
 		void SetContinue()
 		{
 			m_LevelManager.SetContinue();
 		}
+
+
+	IEnumerator Waiter()
+	{	
+			//Wait for 1 seconds
+			int t = 0;
+			while(adButton.adState == AdState.None) 
+			{
+				if(t > 100) {
+					EndGame();
+					yield break;
+				}
+				yield return new WaitForSeconds(0.1f);
+				t++;
+			}
+			if(adButton.adState == AdState.Skipped) {
+				EndGame();
+				yield break;
+			}
+			StartCoroutine(IsWatchingAd());
+	}
+
+	IEnumerator IsWatchingAd()
+	{
+		int t = 0;
+		while(adButton.adState == AdState.Watching) 
+		{
+			if(t > 100) {
+				EndGame();
+				yield break;
+			}
+			yield return new WaitForSeconds(0.1f);
+			t++;
+		}
+		if(adButton.adState == AdState.Completed) Continue();
+		else EndGame();
+	}
 
 		#if UNITY_EDITOR
 		void OnGUI()

@@ -45,6 +45,10 @@ namespace Game.Player
       {
         MakeTransition(StateTransition.STOP_FALL);
       }
+      else if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
+      {
+        MakeTransition(StateTransition.START_DEAD);
+      }
     }
   }
 }

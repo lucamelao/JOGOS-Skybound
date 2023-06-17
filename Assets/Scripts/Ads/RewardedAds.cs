@@ -5,6 +5,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 {
     private string _androidAdUnitRewardedId = "Rewarded_Android";
     private string _adUnitId = null;
+    public AdButton adButton;
 
     void Awake()
     {
@@ -13,6 +14,7 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
 
     public void LoadAndShowAd()
     {
+        if(adButton.adState != AdState.Watching) return;
         LoadAd();
         ShowAd();
     }
@@ -34,16 +36,37 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         Advertisement.Show(_adUnitId, this);
     }
 
+    private void HandleShowResult(ShowResult result)
+    {
+        switch (result)
+        {
+            case ShowResult.Finished:
+                Debug.Log("The ad was successfully shown.");
+                adButton.adState = AdState.Completed;
+                break;
+            case ShowResult.Skipped:
+                adButton.adState = AdState.Skipped;
+                Debug.Log("The ad was skipped before reaching the end.");
+                break;
+            case ShowResult.Failed:
+                adButton.adState = AdState.Skipped;
+                Debug.LogError("The ad failed to be shown.");
+                break;
+        }
+    }
+
 public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
 {
     if (adUnitId.Equals(_adUnitId) && showCompletionState == UnityAdsShowCompletionState.COMPLETED)
     {
         Debug.Log("Unity Ads Rewarded Ad Completed");
-        LoadAd(); // If you want to reload the ad after showing
+        adButton.adState = AdState.Completed;
+        //LoadAd(); // If you want to reload the ad after showing
     }
     else if (adUnitId.Equals(_adUnitId) && showCompletionState == UnityAdsShowCompletionState.SKIPPED)
     {
         Debug.Log("Unity Ads Rewarded Ad Skipped");
+        adButton.adState = AdState.Skipped;
         // handle logic for skipped ad here if needed
     }
 }

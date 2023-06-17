@@ -48,6 +48,10 @@ namespace Game.Player
       {
         MakeTransition(StateTransition.START_RUN);
       }
+      else if(col.gameObject.tag == "Floor" || col.gameObject.tag == "EOM" || col.gameObject.tag == "Spike" || col.gameObject.tag == "Wall")
+      {
+        MakeTransition(StateTransition.START_DEAD);
+      }
     }
 
     private void ApplyForce()
